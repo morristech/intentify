@@ -1,17 +1,10 @@
 package nl.fizzylogic.intentify.controllers
 
-import nl.fizzylogic.intentify.forms.SubmitSampleForm
-import opennlp.tools.doccat.DoccatModel
-import opennlp.tools.doccat.DocumentCategorizerME
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.validation.BindingResult
-import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RestController
-import java.net.URL
-import javax.validation.Valid
 
 /**
  * Endpoint for training the service

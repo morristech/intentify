@@ -1,4 +1,4 @@
-package nl.fizzylogic.intentify.forms
+package nl.fizzylogic.intentify.entities
 
 import javax.validation.constraints.NotNull
 
@@ -10,11 +10,11 @@ data class SubmitSampleForm(
          * The text of the sentence to train
          */
         @NotNull
-        var text: String,
+        var text: String?,
 
         /**
          * Intent of the sentence
          */
         @NotNull
-        var intent: String
+        var intent: String?
 )

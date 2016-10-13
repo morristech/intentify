@@ -1,4 +1,4 @@
-package nl.fizzylogic.intentify.forms
+package nl.fizzylogic.intentify.entities
 
 import javax.validation.constraints.NotNull
 

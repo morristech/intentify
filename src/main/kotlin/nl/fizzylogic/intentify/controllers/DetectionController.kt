@@ -1,6 +1,6 @@
 package nl.fizzylogic.intentify.controllers
 
-import nl.fizzylogic.intentify.forms.DetectionForm
+import nl.fizzylogic.intentify.entities.DetectionForm
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.BindingResult

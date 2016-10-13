@@ -2,7 +2,7 @@ package nl.fizzylogic.intentify.controllers
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
-import nl.fizzylogic.intentify.forms.DetectionForm
+import nl.fizzylogic.intentify.entities.DetectionForm
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired

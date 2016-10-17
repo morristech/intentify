@@ -33,6 +33,7 @@ public class TrainingVerticle extends AbstractVerticle {
 
         SampleSubmissionEventHandler.bind(vertx.eventBus(), trainingSampleService);
         ResetSampleSetEventHandler.bind(vertx.eventBus(), trainingSampleService);
+        StartTrainingEventHandler.bind(vertx.eventBus());
 
         logger.info("Training verticle intialized");
     }

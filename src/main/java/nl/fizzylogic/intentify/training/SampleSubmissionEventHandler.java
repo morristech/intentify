@@ -14,15 +14,17 @@ import nl.fizzylogic.intentify.entities.TrainingSample;
 public class SampleSubmissionEventHandler {
     private static final Logger logger = LoggerFactory.getLogger(SampleSubmissionEventHandler.class);
 
+    private EventBus eventBus;
     private TrainingSampleService trainingSampleService;
 
     /**
      * Initializes a new instance of {@link SampleSubmissionEventHandler}
      *
-     * @param trainingSampleService
+     * @param eventBus  Event bus to use for publishing the start training event
+     * @param trainingSampleService Service to store training samples
      */
-    private SampleSubmissionEventHandler(TrainingSampleService trainingSampleService) {
-
+    private SampleSubmissionEventHandler(EventBus eventBus, TrainingSampleService trainingSampleService) {
+        this.eventBus = eventBus;
         this.trainingSampleService = trainingSampleService;
     }
 
@@ -32,7 +34,7 @@ public class SampleSubmissionEventHandler {
      * @param eventBus Event bus to bind to
      */
     public static void bind(EventBus eventBus, TrainingSampleService trainingSampleService) {
-        SampleSubmissionEventHandler eventHandler = new SampleSubmissionEventHandler(trainingSampleService);
+        SampleSubmissionEventHandler eventHandler = new SampleSubmissionEventHandler(eventBus, trainingSampleService);
         eventBus.consumer(EventBusAddresses.SAMPLE_SUBMISSION, eventHandler::handle);
     }
 
@@ -44,6 +46,13 @@ public class SampleSubmissionEventHandler {
     @SuppressWarnings("squid:UnusedPrivateMethod")
     private void handle(Message<SubmitSampleForm> message) {
         logger.info("Received training sample {0}", message.body());
-        trainingSampleService.storeSample(new TrainingSample(message.body().getIntent(), message.body().getText()));
+
+        TrainingSample sample = new TrainingSample(
+                message.body().getIntent(),
+                message.body().getText());
+
+        trainingSampleService.storeSample(sample);
+
+        eventBus.publish(EventBusAddresses.START_TRAINING, "start");
     }
 }

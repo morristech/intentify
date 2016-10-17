@@ -15,6 +15,11 @@ public class EventBusAddresses {
     public static final String RESET_SAMPLES = "samples.reset";
 
     /**
+     * Starts a new training cycle
+     */
+    public static final String START_TRAINING = "training.start";
+
+    /**
      * Initializes a new instance of {@link EventBusAddresses}
      */
     private EventBusAddresses() {

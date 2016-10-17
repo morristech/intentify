@@ -15,6 +15,7 @@ public class MessageCodecs {
 
     /**
      * Binds the message codecs to the event bus
+     *
      * @param eventBus Event bus to bind to
      */
     public static void register(EventBus eventBus) {

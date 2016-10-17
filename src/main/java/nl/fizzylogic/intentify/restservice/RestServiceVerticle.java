@@ -7,7 +7,6 @@ import io.vertx.core.logging.Logger;
 import io.vertx.core.logging.LoggerFactory;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.handler.BodyHandler;
-import nl.fizzylogic.intentify.common.MessageCodecs;
 
 /**
  * Main verticle for the REST interface
@@ -17,8 +16,9 @@ public class RestServiceVerticle extends AbstractVerticle {
 
     /**
      * Starts the verticle by launching the HTTP server and binding the necessary route handlers
-     * @param startFuture   Future used to indicate completion of the start procedure
-     * @throws Exception    Gets thrown when the startup of the verticle fails
+     *
+     * @param startFuture Future used to indicate completion of the start procedure
+     * @throws Exception Gets thrown when the startup of the verticle fails
      */
     @Override
     public void start(Future<Void> startFuture) throws Exception {
@@ -31,12 +31,12 @@ public class RestServiceVerticle extends AbstractVerticle {
         server.requestHandler(router::accept);
 
         server.listen(8080, result -> {
-           if(result.succeeded()) {
-               logger.info("Webserver started on port 8080");
-               startFuture.complete();
-           } else {
-               startFuture.fail(result.cause());
-           }
+            if (result.succeeded()) {
+                logger.info("Webserver started on port 8080");
+                startFuture.complete();
+            } else {
+                startFuture.fail(result.cause());
+            }
         });
     }
 }

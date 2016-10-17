@@ -12,4 +12,9 @@ public interface TrainingSampleService {
      * @param sample Sample to store
      */
     void storeSample(TrainingSample sample);
+
+    /**
+     * Resets the sample storage
+     */
+    void reset();
 }

@@ -15,6 +15,7 @@ public class TrainingVerticle extends AbstractVerticle {
 
     /**
      * Initializes a new instance of {@link TrainingVerticle}
+     *
      * @param trainingSampleService Training sample service for storing samples
      */
     public TrainingVerticle(TrainingSampleService trainingSampleService) {
@@ -29,7 +30,9 @@ public class TrainingVerticle extends AbstractVerticle {
     @Override
     public void start() throws Exception {
         MessageCodecs.register(vertx.eventBus());
+
         SampleSubmissionEventHandler.bind(vertx.eventBus(), trainingSampleService);
+        ResetSampleSetEventHandler.bind(vertx.eventBus(), trainingSampleService);
 
         logger.info("Training verticle intialized");
     }

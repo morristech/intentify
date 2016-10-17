@@ -2,13 +2,12 @@ package nl.fizzylogic.intentify.training;
 
 import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.PoolingOptions;
+import com.datastax.driver.core.querybuilder.Delete;
 import com.datastax.driver.core.querybuilder.Insert;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import nl.fizzylogic.intentify.entities.TrainingSample;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import static nl.fizzylogic.intentify.common.CollectionUtils.*;
 
 /**
  * Implementation of the {@link TrainingSampleService}
@@ -51,11 +50,14 @@ public class TrainingSampleServiceImpl implements TrainingSampleService {
         cluster.connect().execute(statement);
     }
 
-    @SafeVarargs
-    private static <T> List<T> listOf(T... items) {
-        List<T> results = new ArrayList<>(items.length);
-        Collections.addAll(results, items);
-
-        return results;
+    /**
+     * Deletes all stored samples from the cassandra data store
+     */
+    @Override
+    public void reset() {
+        Delete statement = QueryBuilder.delete().from(databaseName, "samples");
+        cluster.connect().execute(statement);
     }
+
+
 }

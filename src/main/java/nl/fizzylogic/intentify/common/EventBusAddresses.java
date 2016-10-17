@@ -15,4 +15,9 @@ public class EventBusAddresses {
      * Send/Receive training samples
      */
     public static final String SAMPLE_SUBMISSION = "samples.submit";
+
+    /**
+     * Reset sample set
+     */
+    public static final String RESET_SAMPLES = "samples.reset";
 }

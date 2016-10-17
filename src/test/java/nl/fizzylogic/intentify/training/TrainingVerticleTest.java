@@ -38,6 +38,11 @@ public class TrainingVerticleTest {
             public void storeSample(TrainingSample sample) {
                 serviceAsync.complete();
             }
+
+            @Override
+            public void reset() {
+
+            }
         };
 
         Async deployAsync = testContext.async();
@@ -51,6 +56,37 @@ public class TrainingVerticleTest {
                 .setCodecName("submit-sample-form-codec");
 
         vertx.eventBus().publish(EventBusAddresses.SAMPLE_SUBMISSION, formData, deliveryOptions);
+
+        serviceAsync.await(30000);
+    }
+
+    @Test
+    public void resetRemovesTrainingSamples(TestContext testContext) {
+        Async serviceAsync = testContext.async();
+
+        TrainingSampleService trainingServiceMock = new TrainingSampleService() {
+            @Override
+            public void storeSample(TrainingSample sample) {
+
+            }
+
+            @Override
+            public void reset() {
+                serviceAsync.complete();
+            }
+        };
+
+        Async deployAsync = testContext.async();
+
+        vertx.deployVerticle(new TrainingVerticle(trainingServiceMock), result -> deployAsync.complete());
+        deployAsync.await();
+
+        SubmitSampleForm formData = new SubmitSampleForm("Test sentence", "test");
+
+        DeliveryOptions deliveryOptions = new DeliveryOptions()
+                .setCodecName("submit-sample-form-codec");
+
+        vertx.eventBus().publish(EventBusAddresses.RESET_SAMPLES, formData, deliveryOptions);
 
         serviceAsync.await(30000);
     }

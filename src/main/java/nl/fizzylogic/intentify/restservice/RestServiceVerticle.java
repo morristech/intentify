@@ -15,6 +15,11 @@ import nl.fizzylogic.intentify.common.MessageCodecs;
 public class RestServiceVerticle extends AbstractVerticle {
     private static final Logger logger = LoggerFactory.getLogger(RestServiceVerticle.class);
 
+    /**
+     * Starts the verticle by launching the HTTP server and binding the necessary route handlers
+     * @param startFuture   Future used to indicate completion of the start procedure
+     * @throws Exception    Gets thrown when the startup of the verticle fails
+     */
     @Override
     public void start(Future<Void> startFuture) throws Exception {
         Router router = Router.router(vertx);

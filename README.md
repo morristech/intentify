@@ -1,6 +1,7 @@
 # Intentify
 [![Build Status](https://travis-ci.org/wmeints/intentify.svg?branch=master)](https://travis-ci.org/wmeints/intentify)
 [![SonarQube Coverage](https://img.shields.io/sonar/http/sonarqube.com/nl.fizzylogic:intentify/coverage.svg)]()
+[![SonarQube Tech Debt](https://img.shields.io/sonar/http/sonarqube.com/nl.fizzylogic:intentify/tech_debt.svg)]()
 
 The goal of intentify is to detect the intent of sentences you send to it. It will also detect any entities in the sentence.
 You can use this service to build dialogs for things such as chatbots. I personally use this to control dialogs on the pepper

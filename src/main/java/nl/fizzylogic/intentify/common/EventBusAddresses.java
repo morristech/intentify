@@ -5,13 +5,6 @@ package nl.fizzylogic.intentify.common;
  */
 public class EventBusAddresses {
     /**
-     * Initializes a new instance of {@link EventBusAddresses}
-     */
-    private EventBusAddresses() {
-        // Does nothing, this class should not be instantiated
-    }
-
-    /**
      * Send/Receive training samples
      */
     public static final String SAMPLE_SUBMISSION = "samples.submit";
@@ -20,4 +13,11 @@ public class EventBusAddresses {
      * Reset sample set
      */
     public static final String RESET_SAMPLES = "samples.reset";
+
+    /**
+     * Initializes a new instance of {@link EventBusAddresses}
+     */
+    private EventBusAddresses() {
+        // Does nothing, this class should not be instantiated
+    }
 }

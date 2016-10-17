@@ -2,18 +2,12 @@ package nl.fizzylogic.intentify.training;
 
 import io.vertx.core.eventbus.EventBus;
 import io.vertx.core.eventbus.Message;
-import io.vertx.core.logging.Logger;
-import io.vertx.core.logging.LoggerFactory;
 import nl.fizzylogic.intentify.common.EventBusAddresses;
-import nl.fizzylogic.intentify.entities.SubmitSampleForm;
-import nl.fizzylogic.intentify.entities.TrainingSample;
 
 /**
  * Handles resets of the sample set
  */
 public class ResetSampleSetEventHandler {
-    private static final Logger logger = LoggerFactory.getLogger(ResetSampleSetEventHandler.class);
-
     private TrainingSampleService trainingSampleService;
 
     /**
@@ -41,6 +35,7 @@ public class ResetSampleSetEventHandler {
      *
      * @param message Message containing new training data
      */
+    @SuppressWarnings("squid:UnusedPrivateMethod")
     private void handle(Message<String> message) {
         trainingSampleService.reset();
     }

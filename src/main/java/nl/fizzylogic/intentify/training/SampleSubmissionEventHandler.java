@@ -41,6 +41,7 @@ public class SampleSubmissionEventHandler {
      *
      * @param message Message containing new training data
      */
+    @SuppressWarnings("squid:UnusedPrivateMethod")
     private void handle(Message<SubmitSampleForm> message) {
         logger.info("Received training sample {0}", message.body());
         trainingSampleService.storeSample(new TrainingSample(message.body().getIntent(), message.body().getText()));

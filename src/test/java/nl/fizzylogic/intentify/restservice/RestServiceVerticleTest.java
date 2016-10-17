@@ -41,6 +41,19 @@ public class RestServiceVerticleTest {
         submitTrainingSample(testContext, new SubmitSampleForm(null, null), 400);
     }
 
+    @Test
+    public void resetSamplesReturns202(TestContext testContext) {
+        final Async async = testContext.async();
+
+        HttpClientRequest request = vertx.createHttpClient().delete(8080, "localhost", "/api/samples", response -> {
+            testContext.assertEquals(202, response.statusCode());
+            async.complete();
+        });
+
+        request.end();
+    }
+
+
     private void submitTrainingSample(TestContext testContext, SubmitSampleForm formData, int expectedStatusCode) {
         final Async async = testContext.async();
 

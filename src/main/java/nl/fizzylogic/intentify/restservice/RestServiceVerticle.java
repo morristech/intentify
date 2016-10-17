@@ -27,8 +27,8 @@ public class RestServiceVerticle extends AbstractVerticle {
 
         router.route().handler(BodyHandler.create());
 
-        SubmitSampleRoute.bind(router, vertx.eventBus());
         ResetSamplesRoute.bind(router, vertx.eventBus());
+        SubmitSampleRoute.bind(router, vertx.eventBus());
 
         server.requestHandler(router::accept);
 

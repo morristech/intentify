@@ -23,9 +23,7 @@ public class ResetSamplesRoute {
      * @param eventBus Event bus to use for this route
      */
     public static void bind(Router router, EventBus eventBus) {
-        router.post("/api/samples")
-                .consumes("application/json")
-                .handler(message -> handle(eventBus, message));
+        router.delete("/api/samples").handler(message -> handle(eventBus, message));
     }
 
     /**

@@ -5,6 +5,7 @@ import com.datastax.driver.core.PoolingOptions;
 import com.datastax.driver.core.querybuilder.Delete;
 import com.datastax.driver.core.querybuilder.Insert;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
+import nl.fizzylogic.intentify.common.Configuration;
 import nl.fizzylogic.intentify.entities.TrainingSample;
 
 import static nl.fizzylogic.intentify.common.CollectionUtils.*;
@@ -20,15 +21,15 @@ public class TrainingSampleServiceImpl implements TrainingSampleService {
     /**
      * Initializes a new instance of {@link TrainingSampleServiceImpl}
      *
-     * @param databaseName    Name of the keyspace to connect to
-     * @param serverAddresses List of server addresses for the cassandra cluster
+     * @param configuration The configuration to use
      */
-    public TrainingSampleServiceImpl(String databaseName, String... serverAddresses) {
-        this.databaseName = databaseName;
+    public TrainingSampleServiceImpl(Configuration configuration) {
+        databaseName = configuration.getKeyspace();
+
         PoolingOptions poolingOptions = new PoolingOptions();
 
         cluster = Cluster.builder()
-                .addContactPoints(serverAddresses)
+                .addContactPoints(configuration.getCassandraHostnames())
                 .withPoolingOptions(poolingOptions)
                 .build();
     }

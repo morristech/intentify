@@ -1,8 +1,6 @@
 package nl.fizzylogic.intentify.training;
 
 import io.vertx.core.AbstractVerticle;
-import io.vertx.core.Future;
-import io.vertx.core.eventbus.MessageCodec;
 import io.vertx.core.logging.Logger;
 import io.vertx.core.logging.LoggerFactory;
 import nl.fizzylogic.intentify.common.MessageCodecs;
@@ -13,6 +11,11 @@ import nl.fizzylogic.intentify.common.MessageCodecs;
 public class TrainingVerticle extends AbstractVerticle {
     private static final Logger logger = LoggerFactory.getLogger(TrainingVerticle.class);
 
+    /**
+     * Starts the verticle
+     *
+     * @throws Exception Gets thrown when startup fails
+     */
     @Override
     public void start() throws Exception {
         MessageCodecs.register(vertx.eventBus());

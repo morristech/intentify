@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'application'
     id 'jacoco'
+    id "org.sonarqube" version "2.1"
     id 'com.github.johnrengelman.shadow' version '1.2.3'
 }
 
@@ -37,11 +38,16 @@ shadowJar {
     }
 }
 
+sonarqube {
+    properties {
+        property "sonar.projectName", "Intentify"
+        property "sonar.projectKey", "nl.fizzylogic:intentify"
+    }
+}
+
 jacocoTestReport {
     reports {
         xml.enabled = true
         html.enabled = true
     }
 }
-
-check.dependsOn jacocoTestReport

@@ -22,6 +22,9 @@ import java.util.stream.Collectors;
  * Handles submission of sample data through HTTP
  */
 public final class SubmitSampleRoute {
+    /**
+     * Initializes a new instance of {@link SubmitSampleRoute}
+     */
     private SubmitSampleRoute() {
 
     }

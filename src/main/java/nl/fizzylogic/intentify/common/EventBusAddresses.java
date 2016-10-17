@@ -5,14 +5,24 @@ package nl.fizzylogic.intentify.common;
  */
 public class EventBusAddresses {
     /**
+     * Send/Receive training samples
+     */
+    public static final String SAMPLE_SUBMISSION = "samples.submit";
+
+    /**
+     * Reset sample set
+     */
+    public static final String RESET_SAMPLES = "samples.reset";
+
+    /**
+     * Starts a new training cycle
+     */
+    public static final String START_TRAINING = "training.start";
+
+    /**
      * Initializes a new instance of {@link EventBusAddresses}
      */
     private EventBusAddresses() {
         // Does nothing, this class should not be instantiated
     }
-
-    /**
-     * Send/Receive training samples
-     */
-    public static final String SAMPLE_SUBMISSION = "samples.submit";
 }

@@ -2,6 +2,10 @@ package nl.fizzylogic.intentify;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Future;
+import nl.fizzylogic.intentify.restservice.RestServiceVerticle;
+import nl.fizzylogic.intentify.training.TrainingSampleService;
+import nl.fizzylogic.intentify.training.TrainingSampleServiceImpl;
+import nl.fizzylogic.intentify.training.TrainingVerticle;
 
 /**
  * Startup verticle
@@ -14,8 +18,10 @@ public class IntentifyVerticle extends AbstractVerticle {
      */
     @Override
     public void start(Future<Void> startFuture) throws Exception {
-        vertx.deployVerticle("nl.fizzylogic.intentify.restservice.RestServiceVerticle");
-        vertx.deployVerticle("nl.fizzylogic.intentify.training.TrainingVerticle");
+        TrainingSampleService trainingSampleService = new TrainingSampleServiceImpl();
+
+        vertx.deployVerticle(new RestServiceVerticle());
+        vertx.deployVerticle(new TrainingVerticle(trainingSampleService));
 
         startFuture.complete();
     }

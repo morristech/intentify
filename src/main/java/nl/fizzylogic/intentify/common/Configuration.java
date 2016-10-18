@@ -74,7 +74,7 @@ public class Configuration {
         Properties props = new Properties();
         Path filePath = Paths.get("intentify.properties");
 
-        if (!Files.exists(filePath)) {
+        if (!filePath.toFile().exists()) {
             return props;
         }
 

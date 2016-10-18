@@ -3,7 +3,7 @@ package nl.fizzylogic.intentify.entities;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class SubmitSampleFormTests {
+public class SubmitSampleFormTest {
     @Test
     public void equalsWithEqualTextAndIntentReturnsTrue() {
         SubmitSampleForm left = new SubmitSampleForm("test", "test");
